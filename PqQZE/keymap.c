@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,           LCTL(KC_DOWN),                                  LCTL(KC_RIGHT), KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCLN,        KC_BSLS,        
     KC_ESCAPE,      KC_A,           KC_R,           KC_S,           KC_T,           KC_D,           KC_ENTER,                                                                       CW_TOGG,        KC_H,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,       
     SC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_K,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       SC_RSPC,        
-    KC_LCBR,        KC_LEFT_GUI,    KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_SPACE,       LALT(LGUI(LCTL(LSFT(KC_F19)))),                                                                                                LGUI(LCTL(KC_Q)),KC_ENTER,       KC_RIGHT_CTRL,  KC_RIGHT_ALT,   TD(DANCE_0),    KC_RCBR,        
+    KC_LBRC,        KC_LEFT_GUI,    KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_SPACE,       LALT(LGUI(LCTL(LSFT(KC_F19)))),                                                                                                LGUI(LCTL(KC_Q)),KC_ENTER,       KC_RIGHT_CTRL,  KC_RIGHT_ALT,   TD(DANCE_0),    KC_RBRC,        
     LT(1,KC_BSPC),  LALT(KC_F7),    MO(2),                          LALT(LGUI(LCTL(LSFT(KC_F13)))),LGUI(KC_SPACE), MO(1)
   ),
   [1] = LAYOUT_moonlander(
@@ -155,6 +155,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             return true;
+    case KC_LBRC:
+            if (record->event.pressed) {
+                if (mod_state & MOD_MASK_SHIFT) {
+                    del_mods(MOD_MASK_SHIFT);
+                    tap_code16(KC_LBRC);
+                    set_mods(mod_state);
+                } else {
+                    tap_code16(S(KC_LBRC));
+                }
+                return false;
+            }
+        return true;
+    case KC_RBRC:
+        if (record->event.pressed) {
+            if (mod_state & MOD_MASK_SHIFT) {
+                del_mods(MOD_MASK_SHIFT);
+                tap_code16(KC_RBRC);
+                set_mods(mod_state);
+            } else {
+                tap_code16(S(KC_RBRC));
+            }
+            return false;
+        }
+        return true;
   }
   return true;
 }
