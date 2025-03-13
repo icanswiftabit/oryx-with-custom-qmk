@@ -183,6 +183,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
         return true;
+    // case KC_O:
+    //     if (record->event.pressed) {
+    //         // Since Ctrl is now Command, check for MOD_MASK_GUI instead
+    //         if (mod_state & MOD_MASK_SHIFT & MOD_MASK_GUI) {
+    //             // Send Ctrl + Space (but since Ctrl is swapped with Command, use MOD_MASK_GUI)
+    //             del_mods(MOD_MASK_SHIFT); // Remove Shift
+    //             set_mods(MOD_MASK_GUI); // Ensure GUI (formerly Ctrl) is active
+    //             tap_code16(KC_SPACE); // Send Space with GUI modifier
+    //             set_mods(mod_state); // Restore original modifier state
+    //         } else if (mod_state & MOD_MASK_GUI) {
+    //             // Send Ctrl + O (but since Ctrl is swapped with Command, use MOD_MASK_GUI)
+    //             del_mods(MOD_MASK_GUI);
+    //             tap_code16(C(KC_O));
+    //             set_mods(mod_state);
+    //         } else {
+    //             // Send O
+    //             return true;
+    //         }
+    //         return false;
+    //     }
+    //     return false;
   }
   return true;
 }
