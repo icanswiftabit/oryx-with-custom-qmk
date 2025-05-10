@@ -69,7 +69,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_MINUS),
     COMBO(combo1, KC_EQUAL),
     COMBO(combo2, ST_MACRO_0),
-    COMBO(combo3, LCTL(KC_SPACE)),
+    COMBO(combo3, LGUI(KC_SPACE)),
 };
 
 extern rgb_config_t rgb_matrix_config;
