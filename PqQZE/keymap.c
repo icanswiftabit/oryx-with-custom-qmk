@@ -193,6 +193,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
         return true;
+    case KC_Q:
+        if (record->event.pressed) {
+            if ((mod_state & MOD_MASK_GUI) && (mod_state & MOD_MASK_CTRL)) {
+                
+                if (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui) {
+                    // Swap active: send LGUI(KC_L)
+                    del_mods(MOD_MASK_GUI);
+                    del_mods(MOD_MASK_CTRL);
+                    tap_code16(C(KC_L)); // Becomes LGUI(KC_L) due to swap
+                    set_mods(mod_state);
+                } else {
+                    // Swap inactive: send original LGUI(LCTL(KC_Q))
+                    tap_code16(C(G(KC_Q)));
+                }
+            
+            return false;
+        }
     // case KC_O:
     //     if (record->event.pressed) {
     //         // Since Ctrl is now Command, check for MOD_MASK_GUI instead
