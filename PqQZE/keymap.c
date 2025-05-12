@@ -9,7 +9,20 @@ enum custom_keycodes {
   ST_MACRO_0,
 };
 
+bool rgb_matrix_indicators_user(void) {
+    // Replace 42 with the actual LED index of your CG_TOGG key
+    const uint8_t cgtogg_led_index = 66; 
 
+    // Check if Control/GUI swap is active
+    if (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui) {
+        // Blue when swap is ON (HSV: 170,255,255 → RGB: 0,0,255)
+        rgb_matrix_set_color(cgtogg_led_index, 0, 0, 255);
+    } else {
+        // Turn off when swap is OFF
+        rgb_matrix_set_color(cgtogg_led_index, 0, 0, 0);
+    }
+    return false;
+}
 
 enum tap_dance_codes {
   DANCE_0,
