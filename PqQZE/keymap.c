@@ -197,17 +197,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             if ((mods & MOD_MASK_GUI) && (mods & MOD_MASK_CTRL)) {
             
-            // Check Control/GUI swap status
-            if (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui) {
-                // Swap active: send LGUI(KC_L)
-                tap_code16(C(KC_L)); // Becomes LGUI(KC_L) due to swap
-            } else {
-                // Swap inactive: send original LGUI(LCTL(KC_Q))
-                tap_code16(C(G(KC_Q)));
+                // Check Control/GUI swap status
+                if (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui) {
+                    // Swap active: send LGUI(KC_L)
+                    tap_code16(C(KC_L)); // Becomes LGUI(KC_L) due to swap
+                } else {
+                    // Swap inactive: send original LGUI(LCTL(KC_Q))
+                    tap_code16(C(G(KC_Q)));
+                }
+                
+                // Prevent default handling
+                return false;
             }
-            
-            // Prevent default handling
-            return false;
         }
         return true;
   }
