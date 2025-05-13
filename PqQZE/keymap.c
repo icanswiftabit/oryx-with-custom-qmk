@@ -201,8 +201,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 del_mods(MOD_MASK_CTRL);
                 tap_code16(C(KC_L)); // Becomes LGUI(KC_L) due to swap
                 set_mods(mod_state);
-                return false;
             }
+            return false;
         }
         return true;
   }
