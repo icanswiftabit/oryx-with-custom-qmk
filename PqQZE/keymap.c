@@ -195,7 +195,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
     case KC_Q:
         if (record->event.pressed) {
-            if ((mod_state & MOD_MASK_GUI) && (mod_state & MOD_MASK_CTRL) && (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui)) {
+            if ((mod_state & MOD_MASK_CTRL) && (keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui)) {
                 // Swap active: send LGUI(KC_L)
                 del_mods(MOD_MASK_GUI);
                 del_mods(MOD_MASK_CTRL);
