@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,           LGUI(KC_DOWN),                                  LGUI(KC_RIGHT), KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCLN,        KC_BSLS,        
     KC_ESCAPE,      KC_A,           KC_R,           KC_S,           KC_T,           KC_D,           KC_BSPC,                                                                        CW_TOGG,        KC_H,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,       
     SC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_K,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       SC_RSPC,        
-    KC_LBRC,        KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI,    KC_SPACE,       LALT(LGUI(LCTL(LSFT(KC_F19)))),                                                                                                HYPR(KC_F18),KC_BSPC,        KC_RIGHT_GUI,   KC_RIGHT_ALT,   LGUI(LSFT(KC_P)),KC_RBRC,        
+    KC_LBRC,        KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI,    KC_SPACE,       LALT(LGUI(LCTL(LSFT(KC_F19)))),                                                                                                LCTL(LGUI(KC_Q)),KC_BSPC,        KC_RIGHT_GUI,   KC_RIGHT_ALT,   LGUI(LSFT(KC_P)),KC_RBRC,        
     LT(1,KC_ENTER), LALT(KC_F7),    MO(2),                          LALT(LGUI(LCTL(LSFT(KC_F13)))),LCTL(KC_SPACE), MO(1)
   ),
   [1] = LAYOUT_moonlander(
@@ -194,27 +194,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         }
         return true;
-    case KC_F18:
-        uprintf("F18");
-        if (record->event.pressed) {
-            bool ctlgui_swapped = keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui;
-            bool hyper_active = (mod_state & MOD_MASK_CSAG);
-            // uprintf("F18 pressed | swap: %d | mod_state: 0x%02X | gui_active: %d \n", ctlgui_swapped, mod_state, hyper_active);
-            // Get actual modifier state after swap
-            if (hyper_active) {
-                if (ctlgui_swapped) {
-                    del_mods(MOD_MASK_CSAG);
-                    // uprintf("lock windows");
-                    tap_code16(C(KC_L));
-                } else {
-                    del_mods(MOD_MASK_CG);
-                    // uprintf("lock mac");
-                    tap_code16(C(G(KC_Q)));
-                }
-            }
-            return false;
-        }
-        return true;
+    // case KC_F18:
+    //     uprintf("F18");
+    //     if (record->event.pressed) {
+    //         bool ctlgui_swapped = keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui;
+    //         bool hyper_active = (mod_state & MOD_MASK_CSAG);
+    //         // uprintf("F18 pressed | swap: %d | mod_state: 0x%02X | gui_active: %d \n", ctlgui_swapped, mod_state, hyper_active);
+    //         // Get actual modifier state after swap
+    //         if (hyper_active) {
+    //             if (ctlgui_swapped) {
+    //                 del_mods(MOD_MASK_CSAG);
+    //                 // uprintf("lock windows");
+    //                 tap_code16(C(KC_L));
+    //             } else {
+    //                 del_mods(MOD_MASK_CG);
+    //                 // uprintf("lock mac");
+    //                 tap_code16(C(G(KC_Q)));
+    //             }
+    //         }
+    //         return false;
+    //     }
+    //     return true;
   }
   return true;
 }
