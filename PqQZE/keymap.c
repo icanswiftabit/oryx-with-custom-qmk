@@ -195,12 +195,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return true;
     case KC_F18:
-        // uprintf("F18");
+        uprintf("F18");
         if (record->event.pressed) {
             bool ctlgui_swapped = keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui;
             bool gui_active = (mod_state & MOD_MASK_CTRL);
             bool ctrl_active = (mod_state & MOD_MASK_GUI);
-            // uprintf("F18 pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n", ctlgui_swapped, mod_state, gui_active, ctrl_active);
+            uprintf("F18 pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n", ctlgui_swapped, mod_state, gui_active, ctrl_active);
             // Get actual modifier state after swap
             if (gui_active && ctrl_active) {
                 if (ctlgui_swapped) {
