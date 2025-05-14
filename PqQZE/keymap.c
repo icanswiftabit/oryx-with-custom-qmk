@@ -133,9 +133,6 @@ bool rgb_matrix_indicators_user(void) {
 
 uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-      uprintf("Key pressed: %u\n", keycode);
-  }
   mod_state = get_mods(); 
   switch (keycode) {
     case ST_MACRO_0:
@@ -202,20 +199,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             bool ctlgui_swapped = keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui;
             bool gui_active = (mod_state & MOD_MASK_CTRL);
             bool ctrl_active = (mod_state & MOD_MASK_GUI);
-                
+            uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
+                        ctlgui_swapped, mod_state, gui_active, ctrl_active);
             // Get actual modifier state after swap
             if (ctlgui_swapped) {
                 if (gui_active && ctrl_active) {
                     // Send LGUI(KC_L) and block the original Q
                     // tap_code16(C(KC_L));
                     uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
-                        ctlgui_swapped, mod_state, gui_active, ctrl_active);
+                                ctlgui_swapped, mod_state, gui_active, ctrl_active);
                     return false;
                 }
             } 
             // Send code as usual
-            uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
-                        ctlgui_swapped, mod_state, gui_active, ctrl_active);
             
         }
         return false;
