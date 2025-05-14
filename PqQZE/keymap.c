@@ -204,13 +204,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
                 if (gui_active && ctrl_active) {
                     // Send LGUI(KC_L) and block the original Q
-                    tap_code16(C(KC_L));
+                    // tap_code16(C(KC_L));
+                    uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
+                        ctlgui_swapped, mod_state, gui_active, ctrl_active);
                     return false;
                 }
             } 
             // Send code as usual
+            uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
+                        ctlgui_swapped, mod_state, gui_active, ctrl_active);
         }
-        return true;
+        return false;
   }
   return true;
 }
