@@ -137,6 +137,7 @@ bool rgb_matrix_indicators_user(void) {
 
 uint8_t mod_state;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  mod_state = get_mods(); 
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
@@ -153,28 +154,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
     case KC_SLSH:
-            if (record->event.pressed) {
-                if (mod_state & MOD_MASK_SHIFT) {
-                    del_mods(MOD_MASK_SHIFT);
-                    tap_code16(KC_SLSH);
-                    set_mods(mod_state);
-                } else {
-                    tap_code16(S(KC_SLSH));
-                }
-                return false;
+        if (record->event.pressed) {
+            if (mod_state & MOD_MASK_SHIFT) {
+                del_mods(MOD_MASK_SHIFT);
+                tap_code16(KC_SLSH);
+                set_mods(mod_state);
+            } else {
+                tap_code16(S(KC_SLSH));
             }
-            return true;
+            return false;
+        }
+        return true;
     case KC_LBRC:
-            if (record->event.pressed) {
-                if (mod_state & MOD_MASK_SHIFT) {
-                    del_mods(MOD_MASK_SHIFT);
-                    tap_code16(KC_LBRC);
-                    set_mods(mod_state);
-                } else {
-                    tap_code16(S(KC_LBRC));
-                }
-                return false;
+        if (record->event.pressed) {
+            if (mod_state & MOD_MASK_SHIFT) {
+                del_mods(MOD_MASK_SHIFT);
+                tap_code16(KC_LBRC);
+                set_mods(mod_state);
+            } else {
+                tap_code16(S(KC_LBRC));
             }
+            return false;
+        }
         return true;
     case KC_RBRC:
         if (record->event.pressed) {
