@@ -199,7 +199,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             bool ctlgui_swapped = keymap_config.swap_lctl_lgui || keymap_config.swap_rctl_rgui;
             bool gui_active = (mod_state & MOD_MASK_CTRL);
             bool ctrl_active = (mod_state & MOD_MASK_GUI);
-            uprintf("Q pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
+            uprintf("F18 pressed | swap: %d | mod_state: 0x%02X | gui_active: %d | ctrl_active: %d\n",
                         ctlgui_swapped, mod_state, gui_active, ctrl_active);
             // Get actual modifier state after swap
             if (gui_active && ctrl_active) {
@@ -208,8 +208,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                     // del_mods(MOD_MASK_GUI);
                     uprintf("lock windows");
                     // tap_code16(C(KC_L));
-                    
-                    return false;
                 } else {
                     // del_mods(MOD_MASK_CTRL);
                     // del_mods(MOD_MASK_GUI);
