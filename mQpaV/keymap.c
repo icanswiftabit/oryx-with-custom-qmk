@@ -106,6 +106,7 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
+  const uint8_t cgtogg_led_index = 0;
   if (rawhid_state.rgb_control) {
       return false;
   }
