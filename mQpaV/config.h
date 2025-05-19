@@ -1,6 +1,6 @@
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "mQpaV/DzaVxN"
+#define SERIAL_NUMBER "mQpaV/MaJOK4"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 6
 
