@@ -16,22 +16,24 @@ enum tap_dance_codes {
   DANCE_2,
   DANCE_3,
 };
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_NO,                                          KC_NO,          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           MO(2),          
     KC_TAB,         KC_Q,           KC_W,           KC_F,           KC_P,           KC_G,           KC_NO,                                          KC_NO,          KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCLN,        KC_BSLS,        
     KC_ESCAPE,      KC_A,           KC_R,           KC_S,           KC_T,           KC_D,           KC_NO,                                                                          KC_NO,          KC_H,           KC_N,           KC_E,           KC_I,           KC_O,           KC_QUOTE,       
     SC_LSPO,        KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_K,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       SC_RSPC,        
-    KC_NO,          KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI,    KC_SPACE,   KC_NO,                                                                                                          KC_NO,          KC_BSPC, KC_RIGHT_GUI,   KC_RIGHT_ALT,   LGUI(LSFT(KC_P)),          KC_NO,          
-    LT(1,KC_ENTER), KC_NO, KC_NO,                          KC_NO,          MO(1),          KC_NO
+    KC_NO,          KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI,    KC_SPACE,       KC_NO,                                                                                                          KC_NO,          KC_BSPC,        KC_RIGHT_GUI,   KC_RIGHT_ALT,   LGUI(LSFT(KC_P)),KC_NO,          
+    LT(1, KC_ENTER),KC_NO,          KC_NO,                          KC_NO,          KC_NO,          MO(1)
   ),
   [1] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,LALT(LCTL(KC_LEFT)),LALT(LCTL(KC_RIGHT)),LALT(KC_F7),    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_TRANSPARENT, 
     KC_TRANSPARENT, LALT(LGUI(KC_QUOTE)),LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   LGUI(KC_QUOTE), TD(DANCE_0),    KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_MS_BTN2,     
-    KC_TRANSPARENT,        LCTL(KC_F16),   TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    LSFT(KC_F13),   KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, 
+    KC_TRANSPARENT, LCTL(KC_F16),   TD(DANCE_1),    TD(DANCE_2),    TD(DANCE_3),    LSFT(KC_F13),   KC_TRANSPARENT,                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, LALT(KC_F16),                                   KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI, KC_TRANSPARENT,   KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_RIGHT_GUI,   KC_RIGHT_ALT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_BSPC, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+    KC_TRANSPARENT, KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_LEFT_GUI,    KC_BSPC,        KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_RIGHT_GUI,   KC_RIGHT_ALT,   KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [2] = LAYOUT_moonlander(
     KC_TRANSPARENT, KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRANSPARENT, 
@@ -58,12 +60,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_SPACE,       KC_TRANSPARENT, KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
+
 const uint16_t PROGMEM combo0[] = { KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM combo1[] = { KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_W, KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM combo4[] = { KC_N, KC_E, COMBO_END};
-const uint16_t PROGMEM combo5[] = { LGUI(LSFT(KC_P)), KC_RIGHT_ALT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, KC_MINUS),
@@ -71,8 +73,8 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo2, ST_MACRO_0),
     COMBO(combo3, KC_LBRC),
     COMBO(combo4, KC_RBRC),
-    COMBO(combo5, LGUI(KC_SPACE)),
 };
+
 
 extern rgb_config_t rgb_matrix_config;
 
